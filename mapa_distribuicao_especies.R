@@ -32,14 +32,25 @@ coords_sf <- st_as_sf(coords, coords = c("decimalLongitude",
                                          "decimalLatitude"), 
                       crs = 4326)
 
+# Obter dados das fronteiras dos países
+
+world <- ne_countries(scale = "medium", returnclass = "sf")
+
+# Filtrar para um país específico (por exemplo, Brasil)
+
+brazil <- world %>% filter(name == "Brazil")
+
 # Visualizar mapa --------------------------------------------------------------------------------------------------------------------------
 
 # Criar mapa básico com ggplot2
 
-ggplot(data = coords_sf) +
-  geom_sf() +
+ggplot() +
+  geom_sf(data = brazil, fill = "gray80", color = "white") +  # Fronteiras dos países
+  geom_sf(data = coords_sf, aes(color = "red"), 
+          size = 2, show.legend = F) +  # Ocorrências da espécie
   coord_sf() +
   labs(title = paste("Distribuição Geográfica de", species_name),
        x = "Longitude",
-       y = "Latitude")
-
+       y = "Latitude") +
+  theme_minimal()
+ 
