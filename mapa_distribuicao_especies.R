@@ -11,6 +11,7 @@ library(sf)
 library(ggplot2)
 library(rnaturalearth)
 library(rnaturalearthdata)
+library(cols4all)
 
 # Carregar dados ---------------------------------------------------------------------------------------------------------------------------
 
@@ -91,20 +92,25 @@ ylim <- c(10, 70)     # Ajuste conforme necessário para cobrir a América do No
 
 # Visualizar mapa --------------------------------------------------------------------------------------------------------------------------
 
+# Definir cores
+
+cols4all::c4a_table(type = "cat", n = 5)
+
 # Criar mapa básico com ggplot2
 
 ggplot() +
-  geom_sf(data = america, fill = "gray80", color = "white") +  # Fronteiras dos países
-  geom_sf(data = coords_sf, color = "#123134",
-          size = 2) + 
-  geom_sf(data = coords_sf1, color = "#096876", 
-          size = 2) + 
-  geom_sf(data = coords_sf2, color = "#453256",
-          size = 2) + 
-  geom_sf(data = coords_sf3, color = "brown",
-          size = 2) +
-  geom_sf(data = coords_sf4, color = "forestgreen",
-          size = 2) +
+  geom_sf(data = america, fill = "#69b3a2", 
+          color = "white", alpha = 0.5) +  # Fronteiras dos países
+  geom_sf(data = coords_sf, aes(color = "#123134"),
+          size = 1.7) + 
+  geom_sf(data = coords_sf1, aes(color = "#096876"), 
+          size = 1.7) + 
+  geom_sf(data = coords_sf2, aes(color = "#453256"),
+          size = 1.7) + 
+  geom_sf(data = coords_sf3, aes(color = "brown"),
+          size = 1.7) +
+  geom_sf(data = coords_sf4, aes(color = "forestgreen"),
+          size = 1.7) +
   coord_sf(xlim = xlim, ylim = ylim) +
   labs(title = paste("Distribuição Geográfica de", species_name),
        x = "Longitude",
