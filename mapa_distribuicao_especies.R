@@ -63,6 +63,10 @@ world <- ne_countries(scale = "medium", returnclass = "sf")
 america <- world %>%
   filter(continent %in% c("North America")) 
 
+# Ajustar os limites do mapa para focar na América do Norte
+xlim <- c(-180, -40)  # Ajuste conforme necessário para cobrir a América do Norte
+ylim <- c(10, 80)     # Ajuste conforme necessário para cobrir a América do Norte
+
 # Visualizar mapa --------------------------------------------------------------------------------------------------------------------------
 
 # Criar mapa básico com ggplot2
@@ -75,7 +79,7 @@ ggplot() +
           size = 2) + 
       geom_sf(data = coords_sf2, color = "#453256",
           size = 2) + 
-  coord_sf() +
+  coord_sf(xlim = xlim, ylim = ylim) +
   labs(title = paste("Distribuição Geográfica de", species_name),
        x = "Longitude",
        y = "Latitude") +
