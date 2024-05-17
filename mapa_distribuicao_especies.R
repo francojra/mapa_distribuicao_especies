@@ -9,6 +9,8 @@ library(rgbif)
 library(dplyr)
 library(sf)
 library(ggplot2)
+library(rnaturalearth)
+library(rnaturalearthdata)
 
 # Carregar dados ---------------------------------------------------------------------------------------------------------------------------
 
@@ -29,3 +31,15 @@ coords <- occ_data$data %>%
 coords_sf <- st_as_sf(coords, coords = c("decimalLongitude", 
                                          "decimalLatitude"), 
                       crs = 4326)
+
+# Visualizar mapa --------------------------------------------------------------------------------------------------------------------------
+
+# Criar mapa básico com ggplot2
+
+ggplot(data = coords_sf) +
+  geom_sf() +
+  coord_sf() +
+  labs(title = paste("Distribuição Geográfica de", species_name),
+       x = "Longitude",
+       y = "Latitude")
+
