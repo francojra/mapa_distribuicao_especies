@@ -18,7 +18,7 @@ library(cols4all)
 # Buscar dados de ocorrência no GBIF para uma espécie específica
 # Exemplo: Panthera onca (onça-pintada)
 
-species_name <- c("Monachus schauinslandi")
+species_name <- c("Mustela nigripes")
 occ_data <- occ_search(scientificName = species_name, limit = 500)
 
 species_name1 <- c("Bison bison")
@@ -99,21 +99,26 @@ cols4all::c4a_table(type = "cat", n = 5)
 # Criar mapa básico com ggplot2
 
 ggplot() +
-  geom_sf(data = america, fill = "#69b3a2", 
-          color = "white", alpha = 0.5) +  # Fronteiras dos países
-  geom_sf(data = coords_sf, aes(color = "#123134"),
+  geom_sf(data = america, fill = "#5F5647", 
+          color = "white", alpha = 0.7) +  # Fronteiras dos países
+  geom_sf(data = coords_sf, aes(color = "sharg"),
           size = 1.7) + 
-  geom_sf(data = coords_sf1, aes(color = "#096876"), 
+  geom_sf(data = coords_sf1, aes(color = "rnerat"), 
           size = 1.7) + 
-  geom_sf(data = coords_sf2, aes(color = "#453256"),
+  geom_sf(data = coords_sf2, aes(color = "n yr"),
           size = 1.7) + 
-  geom_sf(data = coords_sf3, aes(color = "brown"),
+  geom_sf(data = coords_sf3, aes(color = "a\vetnm hs"),
           size = 1.7) +
-  geom_sf(data = coords_sf4, aes(color = "forestgreen"),
+  geom_sf(data = coords_sf4, aes(color = "srtyhnb hssry"),
           size = 1.7) +
+  scale_color_manual(values = c(c("#DF9ED4", "#C93F55", 
+                                  "#EACC62", "#469D76", 
+                                  "#3C4B99"))) +
   coord_sf(xlim = xlim, ylim = ylim) +
-  labs(title = paste("Distribuição Geográfica de", species_name),
+  labs(title = "Distribuição Geográfica de Espécies
+       Ameaçadas de Extinção nos Estados Unidos",
        x = "Longitude",
-       y = "Latitude") +
+       y = "Latitude",
+       colour = "") +
   theme_minimal()
  
