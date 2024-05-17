@@ -17,12 +17,26 @@ library(rnaturalearthdata)
 # Buscar dados de ocorrência no GBIF para uma espécie específica
 # Exemplo: Panthera onca (onça-pintada)
 
-species_name <- "Panthera onca"
+species_name <- c("Tolypeutes tricinctus")
 occ_data <- occ_search(scientificName = species_name, limit = 500)
+
+species_name1 <- c("Leontopithecus rosalia")
+occ_data1 <- occ_search(scientificName = species_name1, limit = 500)
+
+species_name2 <- c("Cyanopsitta spixii")
+occ_data2 <- occ_search(scientificName = species_name2, limit = 500)
 
 # Extrair coordenadas
 
 coords <- occ_data$data %>%
+  filter(!is.na(decimalLongitude) & !is.na(decimalLatitude)) %>%
+  select(decimalLongitude, decimalLatitude)
+
+coords1 <- occ_data1$data %>%
+  filter(!is.na(decimalLongitude) & !is.na(decimalLatitude)) %>%
+  select(decimalLongitude, decimalLatitude)
+
+coords2 <- occ_data2$data %>%
   filter(!is.na(decimalLongitude) & !is.na(decimalLatitude)) %>%
   select(decimalLongitude, decimalLatitude)
 
@@ -32,22 +46,36 @@ coords_sf <- st_as_sf(coords, coords = c("decimalLongitude",
                                          "decimalLatitude"), 
                       crs = 4326)
 
+coords_sf1 <- st_as_sf(coords1, coords = c("decimalLongitude", 
+                                         "decimalLatitude"), 
+                      crs = 4326)
+
+coords_sf2 <- st_as_sf(coords2, coords = c("decimalLongitude", 
+                                         "decimalLatitude"), 
+                      crs = 4326)
+
+
 # Obter dados das fronteiras dos países
 
 world <- ne_countries(scale = "medium", returnclass = "sf")
 
 # Filtrar para um país específico (por exemplo, Brasil)
 
-brazil <- world %>% filter(name == "Brazil")
+america <- world %>%
+  filter(continent %in% c("North America", "South America")) 
 
 # Visualizar mapa --------------------------------------------------------------------------------------------------------------------------
 
 # Criar mapa básico com ggplot2
 
 ggplot() +
-  geom_sf(data = brazil, fill = "gray80", color = "white") +  # Fronteiras dos países
-  geom_sf(data = coords_sf, aes(color = "red"), 
-          size = 2, show.legend = F) +  # Ocorrências da espécie
+  geom_sf(data = world, fill = "gray80", color = "white") +  # Fronteiras dos países
+  geom_sf(data = coords_sf, aes(color = "#123134"),
+          size = 2) + 
+    geom_sf(data = coords_sf1, aes(color = "#096876"), 
+          size = 2) + 
+      geom_sf(data = coords_sf2, aes(color = "#453256"),
+          size = 2) + 
   coord_sf() +
   labs(title = paste("Distribuição Geográfica de", species_name),
        x = "Longitude",
