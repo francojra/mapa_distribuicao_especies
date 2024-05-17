@@ -17,3 +17,15 @@ library(ggplot2)
 
 species_name <- "Panthera onca"
 occ_data <- occ_search(scientificName = species_name, limit = 500)
+
+# Extrair coordenadas
+
+coords <- occ_data$data %>%
+  filter(!is.na(decimalLongitude) & !is.na(decimalLatitude)) %>%
+  select(decimalLongitude, decimalLatitude)
+
+# Converter para objeto sf
+
+coords_sf <- st_as_sf(coords, coords = c("decimalLongitude", 
+                                         "decimalLatitude"), 
+                      crs = 4326)
