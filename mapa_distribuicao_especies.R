@@ -69,11 +69,11 @@ america <- world %>%
 
 ggplot() +
   geom_sf(data = america, fill = "gray80", color = "white") +  # Fronteiras dos países
-  geom_sf(data = coords_sf, aes(color = "#123134"),
+  geom_sf(data = coords_sf, color = "#123134",
           size = 2) + 
-    geom_sf(data = coords_sf1, aes(color = "#096876"), 
+    geom_sf(data = coords_sf1, color = "#096876", 
           size = 2) + 
-      geom_sf(data = coords_sf2, aes(color = "#453256"),
+      geom_sf(data = coords_sf2, color = "#453256",
           size = 2) + 
   coord_sf() +
   labs(title = paste("Distribuição Geográfica de", species_name),
