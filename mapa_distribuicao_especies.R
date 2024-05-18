@@ -88,7 +88,7 @@ america <- world %>%
 
 # Ajustar os limites do mapa para focar na América do Norte
 xlim <- c(-170, -60)  # Ajuste conforme necessário para cobrir a América do Norte
-ylim <- c(11, 70)     # Ajuste conforme necessário para cobrir a América do Norte
+ylim <- c(10, 70)     # Ajuste conforme necessário para cobrir a América do Norte
 
 # Visualizar mapa --------------------------------------------------------------------------------------------------------------------------
 
