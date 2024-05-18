@@ -99,18 +99,18 @@ cols4all::c4a_table(type = "cat", n = 5)
 # Criar mapa básico com ggplot2
 
 ggplot() +
-  geom_sf(data = america, fill = "#5F5647", 
-          color = "white", alpha = 0.8) +  # Fronteiras dos países
+  geom_sf(data = america, fill = "gray60", 
+          color = "white") +  # Fronteiras dos países
   geom_sf(data = coords_sf, aes(color = "Mustela nigripes"),
-          size = 2.2) + 
+          size = 3, alpha = 0.5) + 
   geom_sf(data = coords_sf1, aes(color = "Bison bison"), 
-          size = 2.2) + 
+          size = 3, alpha = 0.5) + 
   geom_sf(data = coords_sf2, aes(color = "Gymnogyps californianus"),
-          size = 2.2) + 
+          size = 3, alpha = 0.5) + 
   geom_sf(data = coords_sf3, aes(color = "Oncorhynchus nerka"),
-          size = 2.2) +
+          size = 3, alpha = 0.5) +
   geom_sf(data = coords_sf4, aes(color = "Canis rufus"),
-          size = 2.2) +
+          size = 3, alpha = 0.5) +
   scale_color_manual(values = c(c("#DF9ED4", "#C93F55", 
                                   "#EACC62", "#469D76", 
                                   "#3C4B99"))) +
