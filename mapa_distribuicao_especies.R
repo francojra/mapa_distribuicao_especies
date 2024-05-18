@@ -126,6 +126,19 @@ ggplot() +
        colour = "") +
   theme_get() +
   theme(#legend.position = "bottom", # c(0.3, 0.38)
-        axis.text = element_text(color = "black"),
+        axis.text = element_text(color = "black", 
+                                 family = "serif", size = 12),
+        axis.title = element_text(family = "serif", size = 13),
+        #legend.text = element_text(family = "serif", size = 12),
+        text = element_text(family = "serif", size = 12),
         legend.text.align = 0) 
- 
+
+# Salvar mapa ------------------------------------------------------------------------------------------------------------------------------
+
+ggsave("m.jpg", dpi = 300,
+       width = 35, height = 15, 
+       units = "cm", m)
+
+ggsave("m.pdf", dpi = 300,
+       width = 35, height = 15, 
+       units = "cm", m) 
