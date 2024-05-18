@@ -87,8 +87,8 @@ america <- world %>%
   filter(continent %in% c("North America")) 
 
 # Ajustar os limites do mapa para focar na América do Norte
-xlim <- c(-180, -60)  # Ajuste conforme necessário para cobrir a América do Norte
-ylim <- c(10, 70)     # Ajuste conforme necessário para cobrir a América do Norte
+xlim <- c(-170, -60)  # Ajuste conforme necessário para cobrir a América do Norte
+ylim <- c(11, 70)     # Ajuste conforme necessário para cobrir a América do Norte
 
 # Visualizar mapa --------------------------------------------------------------------------------------------------------------------------
 
@@ -99,25 +99,26 @@ cols4all::c4a_table(type = "cat", n = 5)
 # Criar mapa básico com ggplot2
 
 ggplot() +
-  geom_sf(data = america, fill = "gray30", 
+  geom_sf(data = america, fill = "gray25", 
           color = "white") +  # Fronteiras dos países
   geom_sf(data = coords_sf, aes(color = "Mustela nigripes"),
-          size = 4, alpha = 0.4) + 
+          size = 4, alpha = 0.75) + 
   geom_sf(data = coords_sf1, aes(color = "Bison bison"), 
-          size = 4, alpha = 0.4) + 
+          size = 4, alpha = 0.75) + 
   geom_sf(data = coords_sf2, aes(color = "Gymnogyps californianus"),
-          size = 4, alpha = 0.4) + 
+          size = 4, alpha = 0.75) + 
   geom_sf(data = coords_sf3, aes(color = "Oncorhynchus nerka"),
-          size = 4, alpha = 0.4) +
+          size = 4, alpha = 0.75) +
   geom_sf(data = coords_sf4, aes(color = "Canis rufus"),
-          size = 4, alpha = 0.4) +
+          size = 4, alpha = 0.75) +
   scale_color_manual(values = c(c("#DF9ED4", "#C93F55", 
                                   "#EACC62", "#469D76", 
                                   "#3C4B99"))) +
   coord_sf(xlim = xlim, ylim = ylim) +
-  labs(title = "Distribuição de Espécies Ameaçadas de Extinção nos Estados Unidos",
+  labs(title = "Distribuição de Espécies Ameaçadas de Extinção\n na América do Norte",
        x = "Longitude",
        y = "Latitude",
        colour = "") +
-  theme_minimal()
+  theme_minimal() +
+  theme(legend.position = "bottom") # c(0.3, 0.38)
  
