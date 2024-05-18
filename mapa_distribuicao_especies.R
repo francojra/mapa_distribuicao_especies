@@ -100,22 +100,22 @@ cols4all::c4a_table(type = "cat", n = 5)
 
 ggplot() +
   geom_sf(data = america, fill = "#5F5647", 
-          color = "white", alpha = 0.7) +  # Fronteiras dos países
+          color = "white", alpha = 0.8) +  # Fronteiras dos países
   geom_sf(data = coords_sf, aes(color = "Mustela nigripes"),
-          size = 1.7) + 
+          size = 2.2) + 
   geom_sf(data = coords_sf1, aes(color = "Bison bison"), 
-          size = 1.7) + 
-  geom_sf(data = coords_sf2, aes(color = "n yr"),
-          size = 1.7) + 
-  geom_sf(data = coords_sf3, aes(color = "a\vetnm hs"),
-          size = 1.7) +
-  geom_sf(data = coords_sf4, aes(color = "srtyhnb hssry"),
-          size = 1.7) +
+          size = 2.2) + 
+  geom_sf(data = coords_sf2, aes(color = "Gymnogyps californianus"),
+          size = 2.2) + 
+  geom_sf(data = coords_sf3, aes(color = "Oncorhynchus nerka"),
+          size = 2.2) +
+  geom_sf(data = coords_sf4, aes(color = "Canis rufus"),
+          size = 2.2) +
   scale_color_manual(values = c(c("#DF9ED4", "#C93F55", 
                                   "#EACC62", "#469D76", 
                                   "#3C4B99"))) +
   coord_sf(xlim = xlim, ylim = ylim) +
-  labs(title = "Distribuição Geográfica de Espécies\n Ameaçadas de Extinção nos Estados Unidos",
+  labs(title = "Distribuição de Espécies Ameaçadas de Extinção nos Estados Unidos",
        x = "Longitude",
        y = "Latitude",
        colour = "") +
