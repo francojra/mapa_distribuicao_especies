@@ -102,24 +102,24 @@ ggplot() +
   geom_sf(data = america, fill = "gray8", 
           color = "white") +  # Fronteiras dos países
   geom_sf(data = coords_sf, aes(color = "Mustela nigripes"),
-          size = 3, alpha = 0.8) + 
+          size = 3.3, alpha = 0.8) + 
   geom_sf(data = coords_sf1, aes(color = "Bison bison"), 
-          size = 3, alpha = 0.8) + 
+          size = 3.3, alpha = 0.8) + 
   geom_sf(data = coords_sf2, aes(color = "Gymnogyps californianus"),
-          size = 3, alpha = 0.8) + 
+          size = 3.3, alpha = 0.8) + 
   geom_sf(data = coords_sf3, aes(color = "Oncorhynchus nerka"),
-          size = 3, alpha = 0.8) +
+          size = 3.3, alpha = 0.8) +
   geom_sf(data = coords_sf4, aes(color = "Canis rufus"),
-          size = 3, alpha = 0.8) +
+          size = 3.3, alpha = 0.8) +
   scale_color_manual(values = c(c("#DF9ED4", "#C93F55", 
                                   "#EACC62", "#469D76", 
                                   "#3C4B99"))) +
   coord_sf(xlim = xlim, ylim = ylim) +
-  labs(title = "Distribuição de Espécies Ameaçadas de Extinção\n na América do Norte",
+  labs(title = "Distribuição de Espécies Ameaçadas de Extinção na América do Norte",
        x = "Longitude",
        y = "Latitude",
        colour = "") +
-  theme_minimal() +
+  theme_get() +
   theme(#legend.position = "bottom", # c(0.3, 0.38)
         axis.text = element_text(color = "black")) 
  
