@@ -111,7 +111,12 @@ ggplot() +
           size = 3.3, alpha = 0.8) +
   geom_sf(data = coords_sf4, aes(color = "Canis rufus"),
           size = 3.3, alpha = 0.8) +
-  scale_color_manual(values = c(c("#DF9ED4", "#C93F55", 
+  scale_color_manual(labels = c(expression(italic("Mustela nigripes")),
+                                expression(italic("Bison bison")),
+                                expression(italic("Gymnogyps californianus")),
+                                expression(italic("Oncorhynchus nerka")),
+                                expression(italic("Canis rufus"))),
+      values = c(c("#DF9ED4", "#C93F55", 
                                   "#EACC62", "#469D76", 
                                   "#3C4B99"))) +
   coord_sf(xlim = xlim, ylim = ylim) +
@@ -121,5 +126,6 @@ ggplot() +
        colour = "") +
   theme_get() +
   theme(#legend.position = "bottom", # c(0.3, 0.38)
-        axis.text = element_text(color = "black")) 
+        axis.text = element_text(color = "black"),
+        legend.text.align = 0) 
  
