@@ -124,12 +124,13 @@ ggplot() +
        x = "Longitude",
        y = "Latitude",
        colour = "") +
-  theme_get() +
+  theme_gray() +
   theme(#legend.position = "bottom", # c(0.3, 0.38)
         axis.text = element_text(color = "black", 
                                  family = "serif", size = 12),
-        axis.title = element_text(family = "serif", size = 13),
-        #legend.text = element_text(family = "serif", size = 12),
+        axis.title = element_text(family = "serif", 
+                                  size = 10, hjust = 1, vjust = 2.3),
+        legend.text = element_text(family = "serif", size = 12),
         text = element_text(family = "serif", size = 12),
         legend.text.align = 0) 
 
