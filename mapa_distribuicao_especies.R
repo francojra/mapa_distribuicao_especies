@@ -120,7 +120,7 @@ ggplot() +
                                   "#EACC62", "#469D76", 
                                   "#3C4B99"))) +
   coord_sf(xlim = xlim, ylim = ylim) +
-  labs(title = "Distribuição de Espécies Ameaçadas de Extinção na América do Norte",
+  labs(title = "Distribuição de Espécies Ameaçadas de Extinção\n na América do Norte",
        x = "Longitude",
        y = "Latitude",
        colour = "") +
@@ -129,7 +129,7 @@ ggplot() +
         axis.text = element_text(color = "black", 
                                  family = "serif", size = 12),
         axis.title = element_text(family = "serif", 
-                                  size = 10, hjust = 1, vjust = 2.3),
+                                  size = 10, hjust = 1, lineheight = 5),
         legend.text = element_text(family = "serif", size = 12),
         text = element_text(family = "serif", size = 12),
         legend.text.align = 0) 
